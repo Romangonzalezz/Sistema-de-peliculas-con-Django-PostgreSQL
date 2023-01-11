@@ -12,10 +12,50 @@
 <style>
 
     .pelicula {
-        background-color: #877a7a;
+        background-color:  #606060;
         margin: 2.5rem;
         color: white;
     }
+    /* Dropdown Button */
+    .dropbtn {
+        background-color: black;
+        color: rgb(242, 199, 199);
+        padding: 4px;
+        border: none;
+        }
+
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    /* Dropdown Content (Hidden by Default) */
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+    }
+
+    /* Links inside the dropdown */
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    /* Change color of dropdown links on hover */
+    .dropdown-content a:hover {background-color: #ddd;}
+
+    /* Show the dropdown menu on hover */
+    .dropdown:hover .dropdown-content {display: block;}
+
+    /* Change the background color of the dropdown button when the dropdown content is shown */
+    .dropdown:hover .dropbtn {background-color: #3e8e41;}
 
 </style>
 
@@ -24,12 +64,10 @@
 
 <!-- CONTENIDO PRINCIPAL (PELICULAS..)  -->
 <div class="container-fluid">
-    <div class="row text-center bg-dark" style="color: white;">
-        <h1>CARTELERA</h1>
-    </div>
-
     {% if pelicula_genero %}
-        <h3> Estas son las peliculas del genero {{pelicula_genero}}: </h3>
+        <div class="container-fluid d-flex justify-content-center"> 
+            <h3> Estas son las peliculas del genero {{pelicula_genero|title}}: </h3>
+        </div>
     {% endif %}
 
 
@@ -37,9 +75,11 @@
     <section class="centered d-inline-flex"> 
         <div class="pelicula"> 
             <img src="{{pelicula.imagen.url}}" style="width: 286px; height: 346px; ">
-            <h1 class="text-center">{{pelicula.titulo}}</h1>
+            <h1 class="text-center">{{pelicula.titulo}} <span class="material-symbols-outlined" style="width: 50px;"><a href="{% url 'peliculasApp:pelicula_detail' pk=pelicula.id %}" style="text-decoration: none; color: white;">visibility</a></span></h1>
         </div>
     </section>
+    {% empty %}
+    <h3>No hay peliculas agregadas en el sistema de este genero... </h3>
     {% endfor %}
 </div>
 
@@ -52,6 +92,7 @@
 <div> 
     {% include 'paginador.html' %}    
 </div>
+
 
 
 

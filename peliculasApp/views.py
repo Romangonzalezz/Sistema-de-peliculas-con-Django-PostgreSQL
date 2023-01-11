@@ -38,6 +38,7 @@ class PeliculaDetail(DetailView):
 
 class PeliculaGenero(ListView):
     model = Pelicula
+    paginate_by = 2
 
     def get_queryset(self):
         self.genero = self.kwargs['genero']
@@ -47,3 +48,19 @@ class PeliculaGenero(ListView):
         context = super(PeliculaGenero, self).get_context_data(**kwargs)
         context['pelicula_genero'] = self.genero
         return context
+    
+
+class PeliculaBuscador(ListView):
+    model = Pelicula
+    paginate_by = 2
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        if query:
+            object_list = self.model.objects.filter(titulo__icontains=query)
+        else:
+            objcet_list = self.model.objects.none()
+        return object_list
+        
+
+       

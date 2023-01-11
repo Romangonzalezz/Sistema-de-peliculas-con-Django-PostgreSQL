@@ -5,15 +5,15 @@ GENEROS_CHOICES = [
     ('aventura', 'Aventura'),
     ('animacion', 'Animacion'),
     ('drama', 'Drama'),
-    ('cienciaficcion', 'Ciencia Ficcion'),
+    ('ciencia ficcion', 'Ciencia Ficcion'),
     ('terror', 'Terror'),
     ('misterio', 'Misterio'),
 ]
 
 STATUS_CHOICES = [ 
-    ('RA', 'Recientemente anidada'),
-    ('MV', 'Mas vista'),
-    ('TV', 'Mas valorada'),
+    ('recientemente anidada', 'Recientemente anidada'),
+    ('mas vista', 'Mas vista'),
+    ('mas valorada', 'Mas valorada'),
 ]
 
 class Pelicula(models.Model):
@@ -21,8 +21,8 @@ class Pelicula(models.Model):
     sinopsis = models.TextField(max_length=1000)
     anio = models.DateField()
     imagen = models.ImageField(upload_to='peliculas')
-    genero = models.CharField(choices=GENEROS_CHOICES, max_length=14)
-    status = models.CharField(choices=STATUS_CHOICES, max_length=2)
+    genero = models.CharField(choices=GENEROS_CHOICES, max_length=15)
+    status = models.CharField(choices=STATUS_CHOICES, max_length=22)
 
     def __str__(self):
         return self.titulo
