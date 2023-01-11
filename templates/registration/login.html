@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %}Iniciar Sesion{% endblock %}
+
+{% block content %}
+
+<style>
+
+    .form-box {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        width: 250px;
+        height: 300px;
+        margin-top: 5rem;
+        margin-bottom: 5rem;
+        background-color: black;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+
+    .bott{
+        margin-top: 1rem;
+    }
+
+    
+</style>
+
+
+    <form method="post">
+        <div class="container-fluid form-box">
+            {% csrf_token %}
+            <label for="usuario">
+                Usuario
+                <input type="text" name="username" class="form-control" placeholder="Ingresa tu nombre de usuario">
+            </label>
+            <label for="pass">
+                Contraseña
+                <input type="text" name="passwordd" class="form-control" placeholder="Ingresa tu contraseña">
+            </label>            
+            <button type="submit" class="btn btn-primary bott"> Iniciar Sesion</button>
+        </div>
+    </form>
+
+
+
+
+{% endblock %}

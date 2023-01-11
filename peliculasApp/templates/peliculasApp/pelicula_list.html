@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Peliculas{% endblock %}
+
+
+
+
+
+{% block content %}
+
+
+<!-- ESTILOS  -->
+<style>
+
+    .pelicula {
+        background-color: #877a7a;
+        margin: 2.5rem;
+        color: white;
+    }
+
+</style>
+
+
+
+
+<!-- CONTENIDO PRINCIPAL (PELICULAS..)  -->
+<div class="container-fluid">
+    <div class="row text-center bg-dark" style="color: white;">
+        <h1>CARTELERA</h1>
+    </div>
+
+    {% if pelicula_genero %}
+        <h3> Estas son las peliculas del genero {{pelicula_genero}}: </h3>
+    {% endif %}
+
+
+    {% for pelicula in object_list %}
+    <section class="centered d-inline-flex"> 
+        <div class="pelicula"> 
+            <img src="{{pelicula.imagen.url}}" style="width: 286px; height: 346px; ">
+            <h1 class="text-center">{{pelicula.titulo}}</h1>
+        </div>
+    </section>
+    {% endfor %}
+</div>
+
+
+
+
+
+
+<!-- PAGINADOR  -->
+<div> 
+    {% include 'paginador.html' %}    
+</div>
+
+
+
+{% endblock %}

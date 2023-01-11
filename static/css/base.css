@@ -1,0 +1,59 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+nav {
+    background-color: black;
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+ul {
+    display:flex;
+    padding: 8px;
+    gap: 2.5rem;
+    font-size: 17px;
+}
+
+ul li {
+    list-style: none;
+}
+
+ul li a {
+    text-decoration: none;
+    color: rgb(242, 199, 199);
+}
+
+
+.button-nav button a {
+    text-decoration: none; 
+}
+
+.button-nav > button {
+    border-radius: 2px;
+    
+}
+
+.button-nav{
+    padding: 8px;
+}
+
+
+
+
+@media (min-width: 200px) and (max-width: 766px ){
+    nav{
+        flex-direction: column;
+    }
+    .button-nav{
+        display: flex;
+        gap: 2rem;
+    }
+}
+

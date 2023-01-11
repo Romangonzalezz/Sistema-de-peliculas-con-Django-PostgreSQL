@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}Peliculas detail{% endblock %}
+
+{% block content %}
+
+<style> 
+    .container-box {
+        display: flex;
+        background-color: red;
+        height: auto;
+        margin: 2rem 2rem 0 2rem; 
+        padding: 2rem;
+    }
+
+
+    .container-2 {
+        margin-left:2rem;
+    }
+
+    .container-box-2 {
+        display: flex;
+        background-color: red;
+        height: auto;
+        margin: 2rem 2rem 0 2rem; 
+        padding: 1rem 2.5rem 0 2rem;
+        
+    }
+
+    .container-box-2 h2 {
+        font-size: 18.5px;
+        text-align-last: right;
+    }
+
+
+
+</style>
+
+<section style="display: inline-flex;"> 
+<div class="container-box">
+    <img src="{{pelicula.imagen.url}}" style="width: 286px; height: 346px; border-radius: 8px;">
+    <div class="container-2">
+        <h1>{{pelicula.titulo}}</h1>
+        <p>{{pelicula.sinopsis}}</p>
+        <h2>Genero: {{pelicula.genero}}</h2>
+        <h3>Estado: {{pelicula.status}}</h3>
+    </div>
+</div>
+
+<div class="container-box-2">
+    
+        <h2>ULTIMAS PELICULAS</h2>
+    
+</div>
+</section>
+
+
+{% endblock %}
