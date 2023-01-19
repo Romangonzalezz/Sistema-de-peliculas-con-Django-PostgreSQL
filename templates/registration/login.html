@@ -25,7 +25,7 @@
     }
 
     /* Dropdown Button */
-.dropbtn {
+    .dropbtn {
     background-color: black;
     color: rgb(242, 199, 199);
     padding: 4px;
@@ -66,8 +66,11 @@
     .dropdown:hover .dropbtn {background-color: #3e8e41;}
 </style>
 
+    {% if form.errors %}
+    <div class="container-fluid d-flex justify-content-center"><h1>Tu nombre de usuario y contraseña no coinciden, Porfavor intenta de nuevo.</h1></div>
+    {% endif %}
 
-    <form method="post">
+    <form method="post" action="{% url 'login' %}">
         <div class="container-fluid form-box">
             {% csrf_token %}
             <label for="usuario">
@@ -76,9 +79,9 @@
             </label>
             <label for="pass">
                 Contraseña
-                <input type="text" name="passwordd" class="form-control" placeholder="Ingresa tu contraseña">
+                <input type="text" name="password" class="form-control" placeholder="Ingresa tu contraseña">
             </label>            
-            <button type="submit" class="btn btn-primary bott"> Iniciar Sesion</button>
+            <button type="submit" class="btn btn-primary bott" value="login"> Iniciar Sesion</button>
         </div>
     </form>
 

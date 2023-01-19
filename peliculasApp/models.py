@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 
 GENEROS_CHOICES = [ 
     ('accion', 'Accion'),
@@ -23,6 +24,8 @@ class Pelicula(models.Model):
     imagen = models.ImageField(upload_to='peliculas')
     genero = models.CharField(choices=GENEROS_CHOICES, max_length=15)
     status = models.CharField(choices=STATUS_CHOICES, max_length=22)
+
+    creada = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.titulo

@@ -17,4 +17,9 @@ class PeliculaForm(forms.ModelForm):
         model = Pelicula
         fields= ['titulo', 'sinopsis',
                   'anio', 'genero', 'imagen']
-    
+
+
+class RegistrarUsuarioForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ['username', 'password1', 'password2']

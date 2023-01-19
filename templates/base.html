@@ -23,7 +23,7 @@
   <nav>
     <ul style="align-items: center;">
       <li>
-        <a href="{% url 'peliculasApp:pelicula_list' %}">Inicio</a>
+        <a href="{% url 'peliculasApp:pelicula_list' %}">Pelis</a>
       </li>
       <div class="dropdown">
         <button class="dropbtn">Generos<span class="material-symbols-outlined" style="vertical-align: bottom;">
@@ -39,15 +39,27 @@
           <a href="{% url 'peliculas:pelicula_genero' 'misterio' %}">Misterio</a>
         </div>
       </div>
+      {% if user.is_authenticated %}
+      <li>
+        <a href="{% url 'peliculasApp:nueva_pelicula' %}">Nueva pelicula<span class="material-symbols-outlined" style="position:absolute;">add</span></a>
+      </li>
+      {% endif %}
     </ul>
     <form method="get" class="input-box-nav" action="{% url 'peliculasApp:buscar_pelicula' %}">
       {% csrf_token %}
       <input type="text" name="q" id="input-box-nav" placeholder="Buscar pelicula..." value={{ request.GET.q }}>
       <input type="submit" name="boton-buscador" class="submit" value="Buscar"> 
     </form>
-    <div class="button-nav">
+    <div class="button-nav" style="margin-right:1rem;">
+      {% if user.is_authenticated %}
+      <div class="d-flex"> 
+      <h2 style="color:white; margin-right: 1rem;">Hola {{ user.username|title }} </h2>
+      <button class="btn btn-outline-success"><a href="{% url 'logout' %}" style="text-decoration:none; color:white;"> Salir  </a></button>
+      </div>
+      {% else %}
       <button class="btn btn-outline-success"><a href="{% url 'login' %}" style="text-decoration:none; color:white;"> Ingresar  </a></button>
-      <button class="btn btn-outline-success"> Registro </button>
+      <button class="btn btn-outline-success"><a href="{% url 'peliculasApp:registrarse' %}" style="text-decoration:none; color:white;">Registro  </a></button>
+      {% endif %}
     </div>
   </nav>
 

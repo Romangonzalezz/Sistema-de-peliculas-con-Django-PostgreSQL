@@ -1,12 +1,10 @@
 from django.views.generic import ListView, DetailView, View
 from .models import Pelicula
-from django.contrib.auth.decorators import login_required
-from .forms import PeliculaForm, UserCreationForm
+from .forms import PeliculaForm,RegistrarUsuarioForm
 from django.shortcuts import render, redirect
+from django.contrib import messages
 
-
-
-    
+#Crear pelicula 
 class PeliculaView(View):
     form_class = PeliculaForm
     template_name = 'peliculasApp/nueva_pelicula.html'
@@ -21,14 +19,14 @@ class PeliculaView(View):
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST, request.FILES)
         if form.is_valid():
-            print(form)
             form.save()
-            return redirect('pelicula_list')
+            return redirect('peliculasApp:pelicula_list')
+        print(form)
         return render(request, self.template_name, {'form': form})
 
 class PeliculaList(ListView):
     model = Pelicula
-    paginate_by = 2
+    paginate_by = 4
     #context_object_name = ''
     
 
@@ -59,8 +57,19 @@ class PeliculaBuscador(ListView):
         if query:
             object_list = self.model.objects.filter(titulo__icontains=query)
         else:
-            objcet_list = self.model.objects.none()
+            object_list = self.model.objects.none()
         return object_list
         
 
-       
+def registrarse(request):
+    if request.method == 'POST':
+        form = RegistrarUsuarioForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(
+                request, f'Tu cuenta fue creada con éxito! Ya te podes loguear en el sistema.')
+            return redirect('login')
+    else:
+        form = RegistrarUsuarioForm()
+    return render(request, 'peliculasApp/registrarse.html', {'form': form, 'title': 'registrese aquí'})
+

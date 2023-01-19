@@ -6,7 +6,7 @@
     .container-box {
         display: flex;
         background-color: #ededed;
-        height: auto;
+        height: 30rem;
         margin: 2rem 2rem 0 2rem; 
         padding: 2rem;
         border-radius: 8px;
@@ -18,7 +18,7 @@
     }
 
     .container-box-2 {
-        display: flex;
+        display: block;
         background-color: #ededed;
         height: auto;
         margin: 2rem 2rem 0 2rem; 
@@ -27,8 +27,19 @@
     }
 
     .container-box-2 h2 {
-        font-size: 18.5px;
-        text-align-last: right;
+        font-size: 20px;
+        text-align: center;
+        font-weight: revert;
+        padding: 8px;
+    }
+
+    .creada { 
+    display: flex;
+    align-items: center;
+    background-color: #ededed;
+    text-align-last: center;
+    border: none;
+    margin-top: 1.2rem;
     }
 
     /* Dropdown Button */
@@ -88,6 +99,16 @@
 <div class="container-box-2">
     
         <h2>ULTIMAS PELICULAS</h2>
+        {% for pelicula in slider_peliculas %}
+        <div class="card creada" style="width: 13rem;">
+            <img class="card-img-top" src="{{pelicula.imagen.url}}" alt="portada" style="height:120px; width: 80px;">
+            <div class="card-body">
+              <h5 class="card-title">{{pelicula.titulo}}</h5>
+              <h5 class="card-title">Genero: {{pelicula.genero}}</h5>
+              <a href="{% url 'peliculasApp:pelicula_detail' pk=pelicula.id %}" class="btn btn-dark">Visitar</a>
+            </div>
+          </div>
+        {% endfor %}
     
 </div>
 </section>

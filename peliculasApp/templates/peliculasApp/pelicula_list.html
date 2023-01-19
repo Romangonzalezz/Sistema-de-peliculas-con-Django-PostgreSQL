@@ -10,12 +10,17 @@
 
 <!-- ESTILOS  -->
 <style>
-
     .pelicula {
-        background-color:  #606060;
         margin: 2.5rem;
         color: white;
     }
+
+    .title-bx{
+        padding: 8px;
+        font-size: 18px;
+        display: flex;
+    }
+
     /* Dropdown Button */
     .dropbtn {
         background-color: black;
@@ -69,17 +74,17 @@
             <h3> Estas son las peliculas del genero {{pelicula_genero|title}}: </h3>
         </div>
     {% endif %}
-
-
     {% for pelicula in object_list %}
     <section class="centered d-inline-flex"> 
-        <div class="pelicula"> 
-            <img src="{{pelicula.imagen.url}}" style="width: 286px; height: 346px; ">
-            <h1 class="text-center">{{pelicula.titulo}} <span class="material-symbols-outlined" style="width: 50px;"><a href="{% url 'peliculasApp:pelicula_detail' pk=pelicula.id %}" style="text-decoration: none; color: white;">visibility</a></span></h1>
+        <div class="card pelicula" style="width: 18rem;">
+            <img src="{{pelicula.imagen.url}}" class="card-img-top" alt="portada" style="height: 400px;">
+            <div class="card-body" style="background-color:  #606060;">
+              <h5 class="card-title title-bx">{{pelicula.titulo}}<span class="material-symbols-outlined" style="width: 50px; margin-left: 0.5rem;"><a href="{% url 'peliculasApp:pelicula_detail' pk=pelicula.id %}" style="text-decoration: none; color: white;">visibility</a></span></h5>
+            </div>
         </div>
     </section>
     {% empty %}
-    <h3>No hay peliculas agregadas en el sistema de este genero... </h3>
+    <h3>No se ha encontrado ninguna pelicula con tu solicitud :( </h3>
     {% endfor %}
 </div>
 

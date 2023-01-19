@@ -57,6 +57,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'peliculasApp.pelicula_context.slider_peliculas', 
             ],
         },
     },
@@ -139,4 +141,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 #LOGIN 
-LOGIN_REDIRECT_URL = 'pelicula_list'
+LOGIN_REDIRECT_URL = 'peliculasApp:pelicula_list'
+LOGOUT_REDIRECT_URL = 'peliculasApp:pelicula_list'
