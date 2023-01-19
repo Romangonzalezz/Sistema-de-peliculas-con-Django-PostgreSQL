@@ -83,9 +83,46 @@
     /* Change the background color of the dropdown button when the dropdown content is shown */
     .dropdown:hover .dropbtn {background-color: #3e8e41;}
 
+    @media (min-width: 200px) and (max-width: 959px ){
+        .sec-box {
+            display: block;
+        }
+        .container-box-2{ 
+            display: flex;
+            background-color: #ededed;
+            height: auto;
+            flex-direction: column;
+            align-items: center;
+            margin: 2rem 2rem 0 2rem;
+            padding: 1rem 2.5rem 0 2rem;
+        }
+    }
+    
+    @media (min-width: 200px) and (max-width: 664px ){
+        .container-box {
+            display: flex;
+            background-color: #ededed;
+            height: auto;
+            margin: 2rem 2rem 0 2rem;
+            padding: 2rem;
+            border-radius: 8px;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container-2 h1 {
+            font-weight: 500;
+            line-height: 1.2;
+            color: var(--bs-heading-color,inherit);
+            text-align: center;
+            margin: 10px;
+        }
+    }
+
+
 </style>
 
-<section style="display: inline-flex;"> 
+<section style="display: inline-flex;" class="sec-box"> 
 <div class="container-box">
     <img src="{{pelicula.imagen.url}}" style="width: 286px; height: 346px; border-radius: 8px;">
     <div class="container-2">
