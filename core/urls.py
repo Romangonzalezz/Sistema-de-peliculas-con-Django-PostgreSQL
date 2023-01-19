@@ -5,7 +5,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic.base import RedirectView
 from django.urls import reverse_lazy
-from peliculasApp.urls import PeliculaList
+from peliculasApp.views import PeliculaList
 
 urlpatterns = [
     path('admin/', admin.site.urls),
